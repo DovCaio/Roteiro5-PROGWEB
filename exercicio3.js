@@ -10,7 +10,7 @@ let colocarTodasLetrasEmMaiusculoEm500ms =  async (string) => {
             if(typeof string === "string"){
                 resolve(string.toLocaleUpperCase())
             }else {
-                rejects("DEU BO")
+                rejects("DEU B.O.")
             }
             
 
@@ -20,16 +20,28 @@ let colocarTodasLetrasEmMaiusculoEm500ms =  async (string) => {
 }
 
 
+function inverteString(string, i=0) {
+    if (i === string.length - 1){
+
+        return string[i]
+        
+    }else {
+        
+        return inverteString(string, i + 1) + string[i] 
+
+    }
+
+
+}
+
 let inverteAsLetras = async (string) => {
 
     return new Promise((resolve, rejects) => {
-
+        resolve( inverteString(string))        
     })
 }
 
-colocarTodasLetrasEmMaiusculoEm500ms("dadae").then(data => {
-    console.log(data)
-}).finally(() => {
-
+colocarTodasLetrasEmMaiusculoEm500ms("Caio").then(data => {
+    inverteAsLetras(data).then(interdata => console.log(interdata))
 })
 
